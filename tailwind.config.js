@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Roboto", "Arial", "sans-serif"],
-        monospace: ["monospace"],
+        "open-sans": ["Open Sans", "Arial", "sans-serif"],
+        "geist-mono": ["Geist Mono", "Roboto"],
       },
       colors: {
         bettermode: {

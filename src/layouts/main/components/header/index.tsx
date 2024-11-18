@@ -7,7 +7,7 @@ import logo from "./../../../../assets/logo.svg";
  */
 export default function Header() {
   return (
-    <div className="border-b py-6 mb-6">
+    <div className="border-b py-6 mb-10 bg-white shadow-sm fixed z-10 w-full top-0">
       <div className="container mx-auto flex justify-between items-center">
         <img
           src={logo}

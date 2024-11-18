@@ -28,6 +28,7 @@ const POSTS_QUERY = `
         slug
         title
         description
+        publishedAt	
       }
     }
   }

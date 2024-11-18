@@ -9,7 +9,7 @@ import Header from "./components/header";
 
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
-    <div>
+    <div className="bg-zinc-100 pt-32">
       <Header />
       {children}
     </div>

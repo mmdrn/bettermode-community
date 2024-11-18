@@ -1,3 +1,4 @@
+import moment from "moment";
 import usePosts from "../../api/posts";
 import Post from "../../components/post";
 
@@ -16,7 +17,7 @@ export default function Home() {
   return (
     <div>
       <div className="container mx-auto">
-        <div className="grid grid-cols-5 gap-8">
+        <div className="grid grid-cols-4 gap-8">
           {data &&
             data.posts.nodes.map((post) => (
               <Post
@@ -24,6 +25,7 @@ export default function Home() {
                 id={post.id}
                 title={post.title}
                 description={post.description}
+                publishedAt={moment(post.publishedAt).format("YYYY MMMM DD")}
               />
             ))}
         </div>
