@@ -7,6 +7,13 @@ export default {
         sans: ["Roboto", "Arial", "sans-serif"],
         monospace: ["monospace"],
       },
+      colors: {
+        bettermode: {
+          green: {
+            primary: "#46CB19",
+          },
+        },
+      },
     },
   },
   plugins: [],
