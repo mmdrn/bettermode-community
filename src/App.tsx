@@ -1,7 +1,6 @@
 import "./App.css";
-import PostsComponent from "./postscom";
-import Post from "./src/components/Post";
-import usePosts from "./src/hooks/usePosts";
+import Post from "./src/components/post";
+import usePosts from "./src/api/posts";
 
 function App() {
   const variables = {
@@ -18,7 +17,6 @@ function App() {
   return (
     <>
       <div>
-        <PostsComponent />
         <div className="border-b p-2 mb-6">
           <div className="container mx-auto">
             <h1 className="font-bold text-2xl font-mono inline-flex items-center justify-start gap-3">

@@ -1,5 +1,5 @@
-import { useQuery } from "react-query";
 import client from "../../../../graphqlClient";
+import { useQuery } from "react-query";
 import { PostVariables, PostsResponse } from "./types";
 
 const POSTS_QUERY = `
