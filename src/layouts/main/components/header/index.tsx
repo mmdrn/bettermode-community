@@ -19,21 +19,21 @@ export default function Header() {
         <div className="flex items-center justify-end flex-row-reverse gap-5">
           <Link
             to={"/signin"}
-            className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary"
+            className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
           >
             Signin
           </Link>
 
           <Link
-            to={"/signin"}
-            className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary"
+            to={"https://github.com/mmdrn/bettermode-community"}
+            className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
           >
             Github
           </Link>
 
           <Link
             to={"/signin"}
-            className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary"
+            className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
           >
             Documents
           </Link>
