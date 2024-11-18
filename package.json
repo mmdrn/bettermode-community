@@ -12,6 +12,7 @@
   "dependencies": {
     "graphql-request": "^7.1.2",
     "localforage": "^1.10.0",
+    "lucide-react": "^0.460.0",
     "match-sorter": "^8.0.0",
     "path": "^0.12.7",
     "react": "^18.3.1",
