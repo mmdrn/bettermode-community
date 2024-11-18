@@ -10,7 +10,7 @@ import Header from "./components/header";
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
     <div>
-      <Header title={"Bettermode Community"} />
+      <Header />
       {children}
     </div>
   );
