@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.tsx";
 import "./index.css";
-import MainLayout from "./src/layouts/main/index.tsx";
+import MainLayout from "./layouts/main/index.tsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([

@@ -1,6 +1,6 @@
 import "./App.css";
-import Post from "./src/components/post";
-import usePosts from "./src/api/posts";
+import Post from "./components/post";
+import usePosts from "./api/posts";
 
 function App() {
   const variables = {
