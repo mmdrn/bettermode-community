@@ -1,8 +1,7 @@
-import "./App.css";
-import Post from "./components/post";
-import usePosts from "./api/posts";
+import usePosts from "../../api/posts";
+import Post from "../../components/post";
 
-function App() {
+export default function Home() {
   const variables = {
     limit: Number(import.meta.env.VITE_DEFAULT_FETCH_POSTS_LIMIT),
     spaceIds: [import.meta.env.VITE_SPACE_ID],
@@ -32,5 +31,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
