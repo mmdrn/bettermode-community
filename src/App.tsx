@@ -15,36 +15,21 @@ function App() {
   const { data, isLoading, isError } = usePosts(variables);
 
   return (
-    <>
-      <div>
-        <div className="border-b p-2 mb-6">
-          <div className="container mx-auto">
-            <h1 className="font-bold text-2xl font-mono inline-flex items-center justify-start gap-3">
-              <span className="text-3xl w-11 h-11 rounded-md bg-blue-500 flex items-center justify-center">
-                🥸
-              </span>
-              Bettermode Community
-            </h1>
-          </div>
-        </div>
-
-        <div>
-          <div className="container mx-auto">
-            <div className="grid grid-cols-5 gap-8">
-              {data &&
-                data.posts.nodes.map((post) => (
-                  <Post
-                    key={post.id}
-                    id={post.id}
-                    title={post.title}
-                    description={post.description}
-                  />
-                ))}
-            </div>
-          </div>
+    <div>
+      <div className="container mx-auto">
+        <div className="grid grid-cols-5 gap-8">
+          {data &&
+            data.posts.nodes.map((post) => (
+              <Post
+                key={post.id}
+                id={post.id}
+                title={post.title}
+                description={post.description}
+              />
+            ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
