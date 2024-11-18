@@ -1,12 +1,24 @@
-import { useState } from "react";
 import "./App.css";
+import PostsComponent from "./postscom";
+import Post from "./src/components/Post";
+import usePosts from "./src/hooks/usePosts";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const variables = {
+    limit: Number(import.meta.env.VITE_DEFAULT_FETCH_POSTS_LIMIT),
+    spaceIds: [import.meta.env.VITE_SPACE_ID],
+    postTypeIds: [import.meta.env.VITE_POST_TYPE_ID],
+    orderByString: "publishedAt",
+    reverse: false,
+    filterBy: [],
+  };
+
+  const { data, isLoading, isError } = usePosts(variables);
 
   return (
     <>
       <div>
+        <PostsComponent />
         <div className="border-b p-2 mb-6">
           <div className="container mx-auto">
             <h1 className="font-bold text-2xl font-mono inline-flex items-center justify-start gap-3">
@@ -17,25 +29,19 @@ function App() {
             </h1>
           </div>
         </div>
+
         <div>
           <div className="container mx-auto">
             <div className="grid grid-cols-5 gap-8">
-              {Array.from({ length: 7 }).map((_, i) => (
-                <div className="flex flex-col items-start justify-start">
-                  <div className="w-full aspect-square bg-slate-400 rounded-xl relative"></div>
-                  <div className="w-full flex items-start justify-start flex-col p-4 pt-6 -mt-3 rounded-b-md">
-                    <h2 className="truncate font-bold w-full font-mono mb-3">
-                      Building a Scalable Next.js App: Best Practices and
-                      Pitfalls
-                    </h2>
-                    <p>
-                      This post delves into how developers can architect a
-                      Next.js application for scalability. Cover topics like
-                      folder structure optimization...
-                    </p>
-                  </div>
-                </div>
-              ))}
+              {data &&
+                data.posts.nodes.map((post) => (
+                  <Post
+                    key={post.id}
+                    id={post.id}
+                    title={post.title}
+                    description={post.description}
+                  />
+                ))}
             </div>
           </div>
         </div>
