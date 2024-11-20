@@ -18,7 +18,7 @@ export default function Header() {
           src={logo}
           alt="Bettermode Community"
           title="Bettermode Community Logo"
-          className="w-56"
+          className="w-56 h-9 block"
         />
 
         <div className="flex items-center justify-end flex-row-reverse gap-5 dark:text-white">
