@@ -1,6 +1,7 @@
 import moment from "moment";
 import usePosts from "../../api/posts";
 import Post from "../../components/post";
+import { CloudAlert, LoaderCircle } from "lucide-react";
 
 export default function Home() {
   const variables = {
@@ -15,8 +16,18 @@ export default function Home() {
   const { data, isLoading, isError } = usePosts(variables);
 
   return (
-    <div>
-      <div className="container mx-auto">
+    <div className="container mx-auto flex items-center justify-center">
+      {isLoading ? (
+        <p className="text-bettermode-green-primary flex items-center justify-center w-full gap-2 font-geist-mono font-semibold mt-16">
+          <LoaderCircle className="animate-spin" strokeWidth={2.6} size={30} />
+          Loading data...
+        </p>
+      ) : isError ? (
+        <p className="text-bettermode-green-primary flex flex-col items-center justify-center w-full gap-2 font-geist-mono font-semibold mt-16">
+          <CloudAlert strokeWidth={2.6} size={80} />
+          An error occurred while fetching data.
+        </p>
+      ) : (
         <div className="grid grid-cols-4 gap-8">
           {data &&
             data.posts.nodes.map((post) => (
@@ -29,7 +40,7 @@ export default function Home() {
               />
             ))}
         </div>
-      </div>
+      )}
     </div>
   );
 }
