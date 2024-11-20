@@ -14,7 +14,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className={`${globalContext.theme} bg-zinc-100 dark:bg-zinc-700 pt-32 transition-colors`}
+      className={`${globalContext.theme} bg-zinc-100 dark:bg-zinc-700 pt-32 transition-colors relative pb-28 min-h-dvh`}
     >
       <Header />
       {children}
