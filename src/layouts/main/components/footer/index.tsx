@@ -4,9 +4,9 @@
  */
 export default function Footer() {
   return (
-    <div className="border-t py-6 mt-10 bg-white">
+    <div className="border-t dark:border-t-zinc-500 py-6 mt-10 bg-white dark:bg-zinc-800">
       <div className="container mx-auto">
-        <p className="text-xs text-zinc-400 font-geist-mono">
+        <p className="text-xs text-zinc-400 font-geist-mono dark:text-white">
           © 2024 Bettermode Community Platform. All rights reserved.
         </p>
       </div>
