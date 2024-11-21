@@ -1,5 +1,5 @@
 import client from "../../../graphqlClient";
-import { useQuery } from "react-query";
+import { useInfiniteQuery } from "react-query";
 import { PostVariables, PostsResponse } from "./types";
 
 const POSTS_QUERY = `
@@ -34,21 +34,35 @@ const POSTS_QUERY = `
   }
 `;
 
-const fetchPosts = async (variables: PostVariables): Promise<PostsResponse> => {
+const fetchPosts = async ({
+  pageParam = null,
+  ...variables
+}: PostVariables & { pageParam?: string | null }): Promise<PostsResponse> => {
   const token = import.meta.env.VITE_AUTH_TOKEN;
   if (!token) throw new Error("API token is not configured");
 
-  return client.request(POSTS_QUERY, variables, {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  });
+  return client.request(
+    POSTS_QUERY,
+    { ...variables, after: pageParam },
+    {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    }
+  );
 };
 
 const usePosts = (variables: PostVariables) => {
-  return useQuery(["posts", variables], () => fetchPosts(variables), {
-    keepPreviousData: true,
-    staleTime: 5000,
-  });
+  return useInfiniteQuery<PostsResponse, Error>(
+    ["posts", variables],
+    ({ pageParam }) => fetchPosts({ ...variables, pageParam }),
+    {
+      getNextPageParam: (lastPage) =>
+        lastPage.posts.pageInfo.hasNextPage
+          ? lastPage.posts.pageInfo.endCursor
+          : undefined,
+      staleTime: 5000,
+    }
+  );
 };
 
 export default usePosts;
