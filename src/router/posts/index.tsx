@@ -1,8 +1,9 @@
 import moment from "moment";
 import usePosts from "../../api/post/list";
 import Post from "../../components/post";
-import { CloudAlert, LoaderCircle } from "lucide-react";
+import { CloudAlert } from "lucide-react";
 import { useEffect, useRef } from "react";
+import Loading from "../../components/loading";
 
 export default function PostsList() {
   const variables = {
@@ -14,13 +15,13 @@ export default function PostsList() {
     filterBy: [],
   };
 
-  const { data, isLoading, isFetching, isError, fetchNextPage, hasNextPage } = usePosts(variables);
+  const { data, isFetching, isError, fetchNextPage, hasNextPage } = usePosts(variables);
   const observerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && hasNextPage && !isLoading && !isError) fetchNextPage();
+        if (entries[0].isIntersecting && hasNextPage && !isError) fetchNextPage();
       },
       { threshold: 0.1 }
     );
@@ -35,10 +36,7 @@ export default function PostsList() {
   return (
     <div className="container mx-auto flex items-center justify-center flex-col">
       {!data ? (
-        <p className="text-bettermode-green-primary flex items-center justify-center w-full gap-2 font-geist-mono font-semibold mt-16">
-          <LoaderCircle className="animate-spin" strokeWidth={2.6} size={30} />
-          Loading data...
-        </p>
+        <Loading className="mt-16" />
       ) : isError ? (
         <p className="text-bettermode-green-primary flex flex-col items-center justify-center w-full gap-2 font-geist-mono font-semibold mt-16">
           <CloudAlert strokeWidth={2.6} size={80} />
@@ -60,14 +58,7 @@ export default function PostsList() {
             )}
           </div>
           <div ref={observerRef}>
-            {(isLoading || isFetching) && hasNextPage && (
-              <div className="col-span-4 flex justify-center mt-6">
-                <p className="text-bettermode-green-primary flex items-center justify-center w-full gap-2 font-geist-mono font-semibold">
-                  <LoaderCircle className="animate-spin" strokeWidth={2.6} size={30} />
-                  Loading data...
-                </p>
-              </div>
-            )}
+            {isFetching && hasNextPage && <Loading className="mt-10 mb-5" />}
           </div>
         </>
       )}
