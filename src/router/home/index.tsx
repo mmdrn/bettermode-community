@@ -1,5 +1,5 @@
 import moment from "moment";
-import usePosts from "../../api/posts";
+import usePosts from "../../api/post/list";
 import Post from "../../components/post";
 import { CloudAlert, LoaderCircle } from "lucide-react";
 import { useEffect, useRef } from "react";
