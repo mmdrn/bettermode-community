@@ -24,7 +24,9 @@ export default function Post({ id, title, description, publishedAt }: Props) {
         <h2 className="line-clamp-2 font-black w-full font-geist-mono mb-3 transition-colors dark:text-white">
           {title}
         </h2>
-        <p className="line-clamp-3 text-sm leading-6 font-medium text-zinc-500 dark:text-zinc-300 transition-colors">{description}</p>
+        <p className="line-clamp-3 text-sm leading-6 font-medium text-zinc-500 dark:text-zinc-300 transition-colors">
+          {description}
+        </p>
       </div>
     </Link>
   );
