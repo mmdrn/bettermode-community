@@ -1,5 +1,5 @@
 import moment from "moment";
-import usePosts from "../../api/post/list";
+import usePostsList from "../../api/post/list";
 import Post from "../../components/post";
 import { CloudAlert, LoaderCircle } from "lucide-react";
 import { useEffect, useRef } from "react";
@@ -14,7 +14,7 @@ export default function Home() {
     filterBy: [],
   };
 
-  const { data, isLoading, isFetching, isError, fetchNextPage, hasNextPage } = usePosts(variables);
+  const { data, isLoading, isFetching, isError, fetchNextPage, hasNextPage } = usePostsList(variables);
   const observerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

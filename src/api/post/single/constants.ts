@@ -1,4 +1,4 @@
-export const POST_QUERY = `query GetPost($id: ID!) {
+export const GET_POST_QUERY = `query GetPost($id: ID!) {
   post(id: $id) {    id
     slug
     mappingFields {
@@ -34,5 +34,10 @@ export const POST_QUERY = `query GetPost($id: ID!) {
     description
     relativeUrl
     url
+    reactions	{
+      count
+      reaction
+      reacted
+    }
   }
 }`;

@@ -2,6 +2,12 @@ export type GetPostDetailParams = {
   id: string;
 };
 
+export type PostReaction = {
+  count: number;
+  reaction: string;
+  reacted: boolean;
+};
+
 export type Post = {
   subscribersCount: number;
   postTypeId: string;
@@ -25,19 +31,13 @@ export type Post = {
   repliedToId: unknown;
   title: string;
   description: string;
-  // shortcuts: unknown[];
-  // thumbnail: unknown;
-  // embedIds: unknown[];
-  // mentionedMembers: unknown[];
-  // primaryReactionType: string;
-  // lastActivityAt: string;
-  // language: string;
   fields: {
     key: string;
     value: string;
   }[];
   relativeUrl: string;
   url: string;
+  reactions: PostReaction[];
 };
 
 export type GetPostDetailResponse = {
