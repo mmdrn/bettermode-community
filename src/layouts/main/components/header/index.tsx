@@ -21,7 +21,7 @@ export default function Header() {
           className="w-56 h-9 block"
         />
 
-        <div className="flex items-center justify-end flex-row-reverse gap-5 dark:text-white">
+        <div className="flex items-center justify-end flex-row-reverse gap-5 dark:text-white transition-colors">
           <button
             onClick={() =>
               globalContext.setTheme(
@@ -33,14 +33,14 @@ export default function Header() {
             <Sun
               className={twMerge(
                 globalContext.theme === "dark" ? "opacity-0" : "opacity-100",
-                "absolute inset-0"
+                "absolute inset-0 transition-opacity"
               )}
             />
 
             <SunMoon
               className={twMerge(
                 globalContext.theme === "light" ? "opacity-0" : "opacity-100",
-                "absolute inset-0"
+                "absolute inset-0 transition-opacity"
               )}
             />
           </button>

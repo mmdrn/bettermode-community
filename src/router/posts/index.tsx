@@ -1,9 +1,8 @@
 import moment from "moment";
 import usePosts from "../../api/post/list";
 import Post from "../../components/post";
-import { CloudAlert } from "lucide-react";
-import { useEffect, useRef } from "react";
 import Loading from "../../components/loading";
+import { CloudAlert } from "lucide-react";
 
 export default function PostsList() {
   const variables = {
@@ -16,22 +15,6 @@ export default function PostsList() {
   };
 
   const { data, isFetching, isError, fetchNextPage, hasNextPage } = usePosts(variables);
-  const observerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasNextPage && !isError) fetchNextPage();
-      },
-      { threshold: 0.1 }
-    );
-
-    if (observerRef.current) observer.observe(observerRef.current);
-
-    return () => {
-      if (observerRef.current) observer.unobserve(observerRef.current);
-    };
-  }, [fetchNextPage, hasNextPage]);
 
   return (
     <div className="container mx-auto flex items-center justify-center flex-col">
@@ -57,9 +40,17 @@ export default function PostsList() {
               ))
             )}
           </div>
-          <div ref={observerRef}>
-            {isFetching && hasNextPage && <Loading className="mt-10 mb-5" />}
-          </div>
+          {hasNextPage &&
+            (isFetching ? (
+              <Loading className="mt-16" />
+            ) : (
+              <button
+                onClick={() => !isFetching && fetchNextPage()}
+                className="mt-16 px-4 pt-2 pb-2.5 bg-bettermode-green-primary text-white rounded hover:bg-opacity-90"
+              >
+                Show More
+              </button>
+            ))}
         </>
       )}
     </div>
