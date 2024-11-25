@@ -1,5 +1,5 @@
 import moment from "moment";
-import usePosts from "../../api/post/list";
+import usePostsList from "../../api/post/list";
 import Post from "../../components/post";
 import Loading from "../../components/loading";
 import { CloudAlert } from "lucide-react";
@@ -14,7 +14,7 @@ export default function PostsList() {
     filterBy: [],
   };
 
-  const { data, isFetching, isError, fetchNextPage, hasNextPage } = usePosts(variables);
+  const { data, isFetching, isError, fetchNextPage, hasNextPage } = usePostsList(variables);
 
   return (
     <div className="container mx-auto flex items-center justify-center flex-col">

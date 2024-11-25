@@ -1,9 +1,9 @@
 import client from "../../../../graphqlClient";
 import { useInfiniteQuery } from "react-query";
 import { PostVariables, PostsResponse } from "./types";
-import { POSTS_QUERY } from "./constants";
+import { GET_POSTS_QUERY } from "./constants";
 
-const fetchPosts = async ({
+const fetch = async ({
   pageParam = null,
   ...variables
 }: PostVariables & { pageParam?: string | null }): Promise<PostsResponse> => {
@@ -11,7 +11,7 @@ const fetchPosts = async ({
   if (!token) throw new Error("API token is not configured");
 
   return client.request(
-    POSTS_QUERY,
+    GET_POSTS_QUERY,
     { ...variables, after: pageParam },
     {
       "Content-Type": "application/json",
@@ -20,10 +20,10 @@ const fetchPosts = async ({
   );
 };
 
-const usePosts = (variables: PostVariables) => {
+const usePostsList = (variables: PostVariables) => {
   return useInfiniteQuery<PostsResponse, Error>(
-    ["posts", variables],
-    ({ pageParam }) => fetchPosts({ ...variables, pageParam }),
+    ["posts-list", variables],
+    ({ pageParam }) => fetch({ ...variables, pageParam }),
     {
       getNextPageParam: (lastPage) =>
         lastPage.posts.pageInfo.hasNextPage ? lastPage.posts.pageInfo.endCursor : undefined,
@@ -32,4 +32,4 @@ const usePosts = (variables: PostVariables) => {
   );
 };
 
-export default usePosts;
+export default usePostsList;

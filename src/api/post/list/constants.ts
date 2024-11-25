@@ -1,4 +1,4 @@
-export const POSTS_QUERY = `
+export const GET_POSTS_QUERY = `
 query GetPosts($after: String, $before: String, $excludePins: Boolean, $filterBy: [PostListFilterByInput!], $limit: Int!, $offset: Int, $orderBy: PostListOrderByEnum, $orderByString: String, $postTypeIds: [String!], $reverse: Boolean, $spaceIds: [ID!], $query: String) {
   posts(
     after: $after
