@@ -1,8 +1,10 @@
 import moment from "moment";
-import usePostsList from "../../api/post/list";
 import Post from "../../components/post";
 import Loading from "../../components/loading";
 import { CloudAlert } from "lucide-react";
+import { useInfiniteQuery } from "react-query";
+import { PostsResponse } from "../../api/post/list/types";
+import { getPostsList } from "../../api/post/list";
 
 export default function PostsList() {
   const variables = {
@@ -14,7 +16,14 @@ export default function PostsList() {
     filterBy: [],
   };
 
-  const { data, isFetching, isError, fetchNextPage, hasNextPage } = usePostsList(variables);
+  const { data, isFetching, isError, fetchNextPage, hasNextPage } = useInfiniteQuery<
+    PostsResponse,
+    Error
+  >(["posts-list", variables], ({ pageParam }) => getPostsList({ ...variables, pageParam }), {
+    getNextPageParam: (lastPage) =>
+      lastPage.posts.pageInfo.hasNextPage ? lastPage.posts.pageInfo.endCursor : undefined,
+    staleTime: 5000,
+  });
 
   return (
     <div className="container mx-auto flex items-center justify-center flex-col">

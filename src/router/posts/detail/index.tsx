@@ -78,7 +78,7 @@ export default function PostDetail() {
                 {/* Reaction box */}
                 <Reactions
                   clickReaction={(data) => on.handleClickReaction(data.reaction)}
-                  currentReactions={get.data?.post.reactions}
+                  currentReactions={get.data?.post.reactions!}
                 />
               </div>
             </div>
