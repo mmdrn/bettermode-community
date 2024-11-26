@@ -1,5 +1,6 @@
 import moment from "moment";
 import Loading from "../../../components/loading";
+import Error from "../../../components/error";
 import Reactions from "../../../components/reactions";
 import usePostDetail from "./useDetail";
 import { Newspaper } from "lucide-react";
@@ -15,6 +16,8 @@ export default function PostDetail() {
         {get.isLoading ? (
           // Show loading spinner while fetching data
           <Loading className="mt-16" />
+        ) : get.isError ? (
+          <Error />
         ) : (
           <>
             {/* Breadcrumb navigation */}

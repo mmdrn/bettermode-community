@@ -3,6 +3,7 @@ import MainLayout from "../layouts/main";
 import Home from "./home";
 import PostsList from "./posts";
 import PostDetail from "./posts/detail";
+import NotFound from "./not-found"; // Import your NotFound component
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,15 @@ const router = createBrowserRouter([
     element: (
       <MainLayout>
         <PostDetail />
+      </MainLayout>
+    ),
+  },
+  // 404 Route
+  {
+    path: "*",
+    element: (
+      <MainLayout>
+        <NotFound />
       </MainLayout>
     ),
   },

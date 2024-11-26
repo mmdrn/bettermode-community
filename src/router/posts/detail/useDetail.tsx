@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "react-query";
 import {
   AddReactionToPostParams,
@@ -11,10 +11,16 @@ import { getPostDetails } from "../../../api/post/single";
 
 export default function usePostDetail() {
   const params = useParams();
+  const navigate = useNavigate();
 
-  const { data, isLoading, isFetching, refetch } = useQuery<GetPostDetailResponse>(
+  const { data, isLoading, isFetching, refetch, isError } = useQuery<GetPostDetailResponse>(
     ["post-detail", params],
-    () => getPostDetails({ id: params.postId! })
+    () => getPostDetails({ id: params.postId! }),
+    {
+      onError: () => {
+        navigate("/not-found");
+      },
+    }
   );
 
   const { mutateAsync: addReaction, isLoading: isAddingReaction } = useMutation<
@@ -65,6 +71,7 @@ export default function usePostDetail() {
       isFetching,
       isAddingReaction,
       isRemoveingReaction,
+      isError,
     },
     on: {
       handleClickReaction,
