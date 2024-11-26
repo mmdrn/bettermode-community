@@ -10,8 +10,8 @@ export default function PostDetail() {
   const { get, on } = usePostDetail();
 
   return (
-    <div className="container mx-auto">
-      <div className="w-2/3 mx-auto flex items-center justify-center flex-col">
+    <div className="container mx-auto px-4 lg:px-0">
+      <div className="w-full lg:w-2/3 mx-auto flex items-center justify-center flex-col">
         {get.isLoading ? (
           // Show loading spinner while fetching data
           <Loading className="mt-16" />
