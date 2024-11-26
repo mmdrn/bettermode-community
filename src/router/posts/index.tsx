@@ -26,7 +26,7 @@ export default function PostsList() {
   });
 
   return (
-    <div className="container mx-auto flex items-center justify-center flex-col">
+    <div className="container mx-auto flex items-center justify-center flex-col px-4">
       {!data ? (
         <Loading className="mt-16" />
       ) : isError ? (
@@ -36,7 +36,7 @@ export default function PostsList() {
         </p>
       ) : (
         <>
-          <div className="grid grid-cols-4 gap-8">
+          <div className="xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid gap-8">
             {data?.pages.map((page) =>
               page.posts.nodes.map((post) => (
                 <Post
