@@ -18,17 +18,3 @@ export async function getPostsList({
     }
   );
 }
-
-// const usePostsList = (variables: PostVariables) => {
-//   return useInfiniteQuery<PostsResponse, Error>(
-//     ["posts-list", variables],
-//     ({ pageParam }) => getPostsList({ ...variables, pageParam }),
-//     {
-//       getNextPageParam: (lastPage) =>
-//         lastPage.posts.pageInfo.hasNextPage ? lastPage.posts.pageInfo.endCursor : undefined,
-//       staleTime: 5000,
-//     }
-//   );
-// };
-
-// export default usePostsList;
