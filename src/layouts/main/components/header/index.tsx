@@ -93,7 +93,7 @@ export default function Header() {
           </button>
 
           {/* Logo image */}
-          <Link to={"/home"}>
+          <Link to={"/"}>
             <img
               src={logo}
               alt="Bettermode Community"
