@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { Menu, Sun, SunMoon } from "lucide-react";
 import { useGlobalContext } from "../../../../contexts/global-context";
 import { twMerge } from "tailwind-merge";
-import logo from "./../../../../assets/logo.svg";
 import { useState } from "react";
+import logo from "./../../../../assets/logo.svg";
 
 /**
  * Header component that displays the navigation menu, logo, and theme toggle
@@ -21,6 +21,7 @@ export default function Header() {
     <button
       onClick={() => globalContext.setTheme(globalContext.theme === "light" ? "dark" : "light")}
       className="relative w-6 h-6"
+      data-testid="theme-toggle-button"
     >
       <Sun
         className={twMerge(
@@ -86,6 +87,7 @@ export default function Header() {
           <button
             className="mr-4 md:hidden dark:text-white transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            data-testid="menu-toggle-button"
           >
             <Menu size={34} />
           </button>
@@ -110,6 +112,7 @@ export default function Header() {
 
       {/* Mobile navigation menu */}
       <div
+        data-testid="mobile-menu"
         className={twMerge(
           "w-72 h-dvh bg-white dark:bg-zinc-800 shadow-sm fixed left-0 top-0 z-10 pt-20 px-4 pb-4 flex flex-col items-start justify-between border-r dark:border-r-zinc-500 dark:text-white md:hidden transition-all",
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-72"

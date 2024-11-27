@@ -6,19 +6,30 @@ import useReactions from "./useReactions";
 
 /**
  * Props for the Reactions component
- * @param clickReaction - Function to handle reaction click events
- * @param currentReactions - Optional array of current reactions on the post
+ * @interface Props
+ * @property {Function} clickReaction - Function to handle reaction click events
+ * @property {PostReaction[]} currentReactions - Array of current reactions on the post
  */
 type Props = {
   clickReaction: (params: { reaction: (typeof AVAILABLE_REACTIONS)[number]["key"] }) => void;
   currentReactions: PostReaction[];
 };
+
+/**
+ * Reactions component that handles displaying and managing post reactions
+ * @component
+ * @param {Props} props - Component props
+ * @param {Function} props.clickReaction - Function to handle reaction click events
+ * @param {PostReaction[]} props.currentReactions - Array of current reactions on the post
+ * @returns {JSX.Element} Rendered component
+ */
 export default function Reactions({ clickReaction, currentReactions }: Props) {
   const { get, set } = useReactions(currentReactions);
 
   /**
    * Renders the available reactions popup when showReactions is true
-   * @returns JSX element for available reactions or null
+   * @function
+   * @returns {JSX.Element | null} JSX element for available reactions or null if popup is hidden
    */
   const handleRenderAvailableReactions = () => {
     if (!get.showReactions) return null;
@@ -32,6 +43,7 @@ export default function Reactions({ clickReaction, currentReactions }: Props) {
         {AVAILABLE_REACTIONS.map((reaction) => {
           return (
             <button
+              key={reaction.emoji}
               onClick={() => {
                 clickReaction({
                   reaction: reaction.key,
@@ -42,6 +54,7 @@ export default function Reactions({ clickReaction, currentReactions }: Props) {
                 "p-2 w-10 h-10 hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full transition-colors flex items-center justify-center",
                 get.activeReaction === reaction.key && "bg-zinc-100 dark:bg-zinc-700"
               )}
+              data-testid={`${reaction.emoji}-button`}
             >
               {reaction.emoji}
             </button>
@@ -53,15 +66,21 @@ export default function Reactions({ clickReaction, currentReactions }: Props) {
 
   /**
    * Renders the current reactions display when reactions exist
-   * @returns JSX element for current reactions or null
+   * @function
+   * @returns {JSX.Element | null} JSX element for current reactions or null if no reactions
    */
   const handleRenderCurrentReactions = () => {
     if (!currentReactions.length) return null;
 
     return (
       <div className="w-full flex items-center justify-start gap-2 mt-4">
+        {/* Map through current reactions and display their emojis */}
         {currentReactions.map((item) => (
-          <span className="p-2 w-10 h-10 bg-zinc-200 dark:bg-zinc-600 rounded-full transition-colors flex items-center justify-center">
+          <span
+            key={item.reaction}
+            className="p-2 w-10 h-10 bg-zinc-200 dark:bg-zinc-600 rounded-full transition-colors flex items-center justify-center"
+            data-testid={`${item.reaction}-current`}
+          >
             {AVAILABLE_REACTIONS.find((reaction) => reaction.key === item.reaction)?.emoji}
           </span>
         ))}
@@ -78,6 +97,7 @@ export default function Reactions({ clickReaction, currentReactions }: Props) {
           onClick={() => set.setShowReactions(!get.showReactions)}
           className="px-4 py-2 h-[42px] flex items-center justify-center rounded-full border dark:border-zinc-400 bg-transparent dark:hover:bg-zinc-600 transition-colors dark:text-white"
         >
+          {/* Display active reaction emoji or default heart icon */}
           {currentReactions.length ? (
             AVAILABLE_REACTIONS.find((reaction) => reaction.key === get.activeReaction)?.emoji
           ) : (
