@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu, Sun, SunMoon } from "lucide-react";
 import { useGlobalContext } from "../../../../contexts/global-context";
 import { twMerge } from "tailwind-merge";
 import { useState } from "react";
 import logo from "./../../../../assets/logo.svg";
+import Cookies from "js-cookie";
 
 /**
  * Header component that displays the navigation menu, logo, and theme toggle
@@ -12,6 +13,13 @@ import logo from "./../../../../assets/logo.svg";
 export default function Header() {
   const globalContext = useGlobalContext();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const token = Cookies.get("token");
+  const navigate = useNavigate();
+
+  const handleSignout = () => {
+    Cookies.remove("token");
+    navigate("/signin");
+  };
 
   /**
    * Renders the theme toggle button with sun/moon icons
@@ -58,23 +66,26 @@ export default function Header() {
         Posts
       </Link>
       <Link
-        to={"/signin"}
-        className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
-      >
-        Documents
-      </Link>
-      <Link
         to={"https://github.com/mmdrn/bettermode-community"}
         className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
       >
         Github
       </Link>
-      <Link
-        to={"/signin"}
-        className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
-      >
-        Signin
-      </Link>
+      {token ? (
+        <button
+          onClick={handleSignout}
+          className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
+        >
+          Signout
+        </button>
+      ) : (
+        <Link
+          to={"/signin"}
+          className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
+        >
+          Signin
+        </Link>
+      )}
     </>
   );
 

@@ -44,7 +44,6 @@ describe("Component: Main Layout Header", () => {
     // Navigation links
     expect(screen.getAllByText("Home")).toHaveLength(2);
     expect(screen.getAllByText("Posts")).toHaveLength(2);
-    expect(screen.getAllByText("Documents")).toHaveLength(2);
     expect(screen.getAllByText("Github")).toHaveLength(2);
     expect(screen.getAllByText("Signin")).toHaveLength(2);
   });
