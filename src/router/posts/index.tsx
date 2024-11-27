@@ -7,6 +7,7 @@ import { PostsResponse } from "../../api/post/list/types";
 import { getPostsList } from "../../api/post/list";
 
 export default function PostsList() {
+  // Configuration variables for fetching posts
   const variables = {
     limit: Number(import.meta.env.VITE_DEFAULT_FETCH_POSTS_LIMIT) || 10,
     spaceIds: import.meta.env.VITE_SPACE_ID?.split(",").filter(Boolean),
@@ -16,6 +17,7 @@ export default function PostsList() {
     filterBy: [],
   };
 
+  // Fetch posts data using react-query's useInfiniteQuery
   const { data, isFetching, isError, fetchNextPage, hasNextPage } = useInfiniteQuery<
     PostsResponse,
     Error
@@ -27,15 +29,18 @@ export default function PostsList() {
 
   return (
     <div className="container mx-auto flex items-center justify-center flex-col px-4">
+      {/* Show loading state when data is not yet available */}
       {!data ? (
         <Loading className="mt-16" />
       ) : isError ? (
+        // Show error message if data fetching fails
         <p className="text-bettermode-green-primary flex flex-col items-center justify-center w-full gap-2 font-geist-mono font-semibold mt-16">
           <CloudAlert strokeWidth={2.6} size={80} />
           An error occurred while fetching data.
         </p>
       ) : (
         <>
+          {/* Grid layout for posts */}
           <div className="xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid gap-8">
             {data?.pages.map((page) =>
               page.posts.nodes.map((post) => (
@@ -51,6 +56,7 @@ export default function PostsList() {
               ))
             )}
           </div>
+          {/* Show loading indicator or "Show More" button for pagination */}
           {hasNextPage &&
             (isFetching ? (
               <Loading className="mt-16" />
