@@ -75,15 +75,24 @@ export default function Reactions({ clickReaction, currentReactions }: Props) {
     return (
       <div className="w-full flex items-center justify-start gap-2 mt-4">
         {/* Map through current reactions and display their emojis */}
-        {currentReactions.map((item) => (
-          <span
-            key={item.reaction}
-            className="p-2 w-10 h-10 bg-zinc-200 dark:bg-zinc-600 rounded-full transition-colors flex items-center justify-center"
-            data-testid={`${item.reaction}-current`}
-          >
-            {AVAILABLE_REACTIONS.find((reaction) => reaction.key === item.reaction)?.emoji}
-          </span>
-        ))}
+        <div className="flex gap-4">
+          {currentReactions.map((item) => (
+            <div className="flex items-center justify-start font-geist-mono">
+              <span
+                key={item.reaction}
+                className="p-2 w-10 h-10 bg-zinc-200 dark:bg-zinc-600 rounded-full transition-colors flex items-center justify-center"
+                data-testid={`${item.reaction}-current`}
+              >
+                {AVAILABLE_REACTIONS.find((reaction) => reaction.key === item.reaction)?.emoji}
+              </span>
+              {item.count && (
+                <span className="text-xs font-black text-zinc-600 dark:text-zinc-400 ml-2">
+                  {item.count}
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     );
   };
