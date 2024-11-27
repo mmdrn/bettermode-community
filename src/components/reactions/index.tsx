@@ -77,7 +77,7 @@ export default function Reactions({ clickReaction, currentReactions }: Props) {
         {/* Map through current reactions and display their emojis */}
         <div className="flex gap-4">
           {currentReactions.map((item) => (
-            <div className="flex items-center justify-start font-geist-mono">
+            <div className="flex items-center justify-start font-geist-mono" key={item.reaction}>
               <span
                 key={item.reaction}
                 className="p-2 w-10 h-10 bg-zinc-200 dark:bg-zinc-600 rounded-full transition-colors flex items-center justify-center"
