@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import Loading from "./index";
 
-describe("Loading Component", () => {
+describe("Component: loading", () => {
   it("renders with default styles and content", () => {
     render(<Loading />);
     expect(screen.getByText("Loading data...")).toBeInTheDocument();
