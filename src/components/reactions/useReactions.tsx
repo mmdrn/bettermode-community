@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { PostReaction } from "../../api/post/single/types";
 import { AVAILABLE_REACTIONS } from "../../api/post/reaction/constants";
+import { PostReaction } from "../../api/post/types";
 
 /**
  * Custom hook to manage reaction states and interactions

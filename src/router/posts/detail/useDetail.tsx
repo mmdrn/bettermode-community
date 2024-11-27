@@ -6,8 +6,9 @@ import {
 } from "../../../api/post/reaction/types";
 import { addReactionToPost, removeReactionFromPost } from "../../../api/post/reaction";
 import { AVAILABLE_REACTIONS } from "../../../api/post/reaction/constants";
-import { GetPostDetailResponse, PostReaction } from "../../../api/post/single/types";
+import { GetPostDetailResponse } from "../../../api/post/single/types";
 import { getPostDetails } from "../../../api/post/single";
+import { PostReaction } from "../../../api/post/types";
 
 export default function usePostDetail() {
   const params = useParams();

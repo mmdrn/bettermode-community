@@ -45,6 +45,8 @@ export default function PostsList() {
                   title={post.title}
                   description={post.description}
                   publishedAt={moment(post.publishedAt).format("YYYY MMMM DD")}
+                  reactions={post.reactions}
+                  reactionsCount={post.reactionsCount}
                 />
               ))
             )}

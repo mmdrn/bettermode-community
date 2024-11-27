@@ -1,7 +1,7 @@
 import { Heart } from "lucide-react";
 import { AVAILABLE_REACTIONS } from "../../api/post/reaction/constants";
-import { PostReaction } from "../../api/post/single/types";
 import { twMerge } from "tailwind-merge";
+import { PostReaction } from "../../api/post/types";
 import useReactions from "./useReactions";
 
 /**

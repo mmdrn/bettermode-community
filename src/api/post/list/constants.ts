@@ -24,7 +24,13 @@ query GetPosts($after: String, $before: String, $excludePins: Boolean, $filterBy
       slug
       title
       description
-      publishedAt	
+      publishedAt
+      reactionsCount
+      reactions	{
+        count
+        reaction
+        reacted
+      }
     }
   }
 }

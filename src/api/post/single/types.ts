@@ -1,11 +1,7 @@
+import { PostReaction } from "../types";
+
 export type GetPostDetailParams = {
   id: string;
-};
-
-export type PostReaction = {
-  count: number;
-  reaction: string;
-  reacted: boolean;
 };
 
 export type Post = {

@@ -1,3 +1,5 @@
+import { PostReaction } from "../types";
+
 export type PostListFilterByInput = {
   // Add filter input fields based on your API requirements
 };
@@ -48,6 +50,8 @@ export type Post = {
   title: string;
   description: string;
   publishedAt: string;
+  reactions: PostReaction[];
+  reactionsCount: number;
 };
 
 export type PageInfo = {
