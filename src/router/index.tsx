@@ -4,6 +4,7 @@ import Home from "./home";
 import PostsList from "./posts";
 import PostDetail from "./posts/detail";
 import NotFound from "./not-found"; // Import your NotFound component
+import Signin from "./signin";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
     element: (
       <MainLayout>
         <PostDetail />
+      </MainLayout>
+    ),
+  },
+  {
+    path: "/signin",
+    element: (
+      <MainLayout>
+        <Signin />
       </MainLayout>
     ),
   },
