@@ -13,6 +13,7 @@ describe("Component: post", () => {
   it("renders the post title, description, and date", () => {
     render(
       <BrowserRouter>
+        {/* @ts-expect-error - ts-ignore */}
         <Component {...postProps} />
       </BrowserRouter>
     );
@@ -26,6 +27,7 @@ describe("Component: post", () => {
   it("renders the Newspaper icon", () => {
     render(
       <BrowserRouter>
+        {/* @ts-expect-error - ts-ignore */}
         <Component {...postProps} />
       </BrowserRouter>
     );
@@ -38,6 +40,7 @@ describe("Component: post", () => {
   it("navigates to the correct URL on click", () => {
     const { container } = render(
       <BrowserRouter>
+        {/* @ts-expect-error - ts-ignore */}
         <Component {...postProps} />
       </BrowserRouter>
     );
@@ -49,6 +52,7 @@ describe("Component: post", () => {
   it("applies hover styles", () => {
     const { container } = render(
       <BrowserRouter>
+        {/* @ts-expect-error - ts-ignore */}
         <Component {...postProps} />
       </BrowserRouter>
     );
