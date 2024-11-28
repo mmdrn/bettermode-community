@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.markdown-content {
+  @apply text-base text-gray-600 leading-7;
+
+  & > h1 {
+    @apply text-4xl font-bold mt-4 mb-2 text-gray-900;
+  }
+
+  & > h2 {
+    @apply text-3xl font-semibold mt-4 mb-2 text-gray-800;
+  }
+
+  & > h3 {
+    @apply text-2xl font-medium mt-3 mb-1 text-gray-700;
+  }
+
+  & > p {
+    @apply mt-2 mb-4;
+  }
+
+  & > a {
+    @apply text-blue-600 underline hover:text-blue-500;
+  }
+
+  & > ul {
+    @apply list-disc list-inside mt-3 mb-4 pl-4;
+  }
+
+  & > ol {
+    @apply list-decimal list-inside mt-3 mb-4 pl-4;
+  }
+
+  & > blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic text-gray-500 my-4;
+  }
+
+  & > code {
+    @apply bg-gray-100 rounded px-2 py-1 font-mono text-sm text-gray-700;
+  }
+
+  & > pre {
+    @apply bg-gray-800 text-white rounded p-4 overflow-x-auto;
+  }
+
+  & > table {
+    @apply table-auto border-collapse border border-gray-300 w-full my-4;
+  }
+
+  & > th,
+  & > td {
+    @apply border border-gray-300 px-4 py-2 text-left;
+  }
+
+  & > th {
+    @apply bg-gray-100 font-bold;
+  }
+}
