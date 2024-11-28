@@ -110,8 +110,5 @@ Open your browser and navigate through the following routes:
   - Users must be signed in to view this page.  
   - Posts include their associated reactions, and a "Show More" button enables navigation to subsequent pages.  
   - Pagination does not use URL search params, so refreshing the page will reset to the first page.
+- **`/posts/:id`**: Clicking on any post from the posts gallery will navigate the user to this route. The application will fetch details about the selected post and display it. This route is used to view individual post details, including additional information beyond the summary shown in the posts list.
 ```
-
----
-
-This format should fit perfectly into your README file. Let me know if there’s anything else you’d like to adjust or expand on!
