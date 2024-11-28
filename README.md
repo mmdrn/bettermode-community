@@ -80,16 +80,16 @@ VITE_AUTH_EMAIL="<your-auth-email>" # Default authentication email
 
 Important Notes:
 
-- **`VITE_AUTH_TOKEN`**: This is a critical value. You must add a real and valid JWT authorization token here to access the Bettermode API. If this token is incorrect or missing, the application will not be able to fetch posts or authenticate users properly.
-- **`VITE_AUTH_PASSWORD and VITE_AUTH_EMAIL`**:: These values are used for fake authentication. You can set any email and password here, but they must match what you input when logging in. Upon successful login, the token from this environment variable will be stored in the user's cookies.
+- **`VITE_AUTH_TOKEN`**: This is a critical value. You must add a real and `valid JWT authorization token` here to access the `Bettermode API`. If this token is incorrect or missing, the application will not be able to fetch posts or authenticate users properly.
+- **`VITE_AUTH_PASSWORD and VITE_AUTH_EMAIL`**: These values are used for fake authentication. You can set any email and password here, but they must match what you input when logging in. Upon successful login, the token from this environment variable will be stored in the user's `cookies`.
     After logging in with the correct credentials, the application will store a token key in the user's cookies, which will allow the user to access the posts list tied to that token.
 
 
 Authentication Flow:
 
-    After setting up the .env file, navigate to /signin.
-    Enter the email and password defined in the .env file. If the credentials are correct, the application will log you in and store the token in your cookies.
-    Once logged in, the user will be redirected to the home page and can access the /posts route to see the posts list tied to the provided token.
+- After setting up the `.env` file, navigate to `/signin`.
+- Enter the `email and password` defined in the `.env` file. If the credentials are correct, the application will log you in and store the token in your cookies.
+- Once logged in, the user will be redirected to the home page and can access the `/posts` route to see the posts list tied to the provided token.
 
 Note: Be sure to set these values correctly to ensure smooth authentication and data fetching.
 
