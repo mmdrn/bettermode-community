@@ -8,8 +8,6 @@
 4. [Project Structure](#project-structure)
 5. [Available Scripts](#available-scripts)
 6. [Technologies Used](#technologies-used)
-7. [Contributing](#contributing)
-8. [License](#license)
 
 ---
 
@@ -169,3 +167,33 @@ Useful for previewing the app before deploying it.
 
 Runs unit tests using Vitest.  
 You can write and execute test cases to ensure the application's reliability.
+
+---
+
+## Technology Used
+
+This project is built using the following technologies:
+
+1. #### Frontend
+    - **React**: A JavaScript library for building user interfaces. It's used for creating the dynamic and responsive components of the web application.
+    - **TypeScript**: A superset of JavaScript that adds static types. It is used throughout the project to enhance developer productivity and improve code quality.
+    - **Tailwind CSS**: A utility-first CSS framework for creating custom designs without writing custom CSS. It allows for fast styling with pre-defined classes.
+    - **Vite**: A fast, next-generation bundler for JavaScript and TypeScript projects. It's used as the development and build tool.
+    - **Vitest**: A testing framework for unit and integration testing. It integrates well with Vite and provides a fast and reliable testing environment.
+    - **React Router**: A library for handling navigation and routing in the React application. It helps in managing different routes and views in the app.
+
+2. #### State Management
+    - **React Context API**: Used for managing global application state, such as user authentication and reaction states.
+
+3. #### Linting and Formatting
+    - **ESLint**: A tool for identifying and fixing JavaScript and TypeScript code quality issues.
+    - **Prettier**: A code formatter that ensures consistent code styling across the project.
+
+4. #### Development Tools
+    - **Git**: Version control system used to manage the project and collaborate with team members.
+    - **Yarn**: A package manager used for managing project dependencies and scripts.
+
+5. #### Testing
+    - **Jest**: A testing framework used for unit and integration tests.
+    - **React Testing Library**: A library for testing React components by simulating user interactions.
+    - **Vitest**: A testing framework used for faster and more efficient tests within the Vite ecosystem.
