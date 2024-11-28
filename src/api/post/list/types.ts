@@ -1,5 +1,6 @@
 import { PostReaction } from "../types";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type PostListFilterByInput = {
   // Add filter input fields based on your API requirements
 };
