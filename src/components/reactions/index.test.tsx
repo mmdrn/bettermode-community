@@ -11,7 +11,7 @@ describe("Component: reactions", () => {
   it("renders the heart icon when there are no reactions", () => {
     render(
       <BrowserRouter>
-        <Component clickReaction={clickReaction} currentReactions={[]} />
+        <Component clickReaction={clickReaction} currentReactions={[]} reactionsCount={0} />
       </BrowserRouter>
     );
 
@@ -68,7 +68,7 @@ describe("Component: reactions", () => {
 
     render(
       <BrowserRouter>
-        <Component clickReaction={clickReaction} currentReactions={currentReactions} />
+        <Component clickReaction={clickReaction} currentReactions={currentReactions} reactionsCount={4} />
       </BrowserRouter>
     );
 

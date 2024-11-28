@@ -9,11 +9,13 @@ import useReactions from "./useReactions";
  * @interface Props
  * @property {Function} clickReaction - Function to handle reaction click events
  * @property {PostReaction[]} currentReactions - Array of current reactions on the post
+ * @property {number} reactionsCount - Total count of reactions on the post
  */
 type Props = {
   // eslint-disable-next-line no-unused-vars
   clickReaction: (params: { reaction: (typeof AVAILABLE_REACTIONS)[number]["key"] }) => void;
   currentReactions: PostReaction[];
+  reactionsCount: number;
 };
 
 /**
@@ -24,8 +26,8 @@ type Props = {
  * @param {PostReaction[]} props.currentReactions - Array of current reactions on the post
  * @returns {JSX.Element} Rendered component
  */
-export default function Reactions({ clickReaction, currentReactions }: Props) {
-  const { get, set } = useReactions(currentReactions);
+export default function Reactions({ clickReaction, currentReactions, reactionsCount }: Props) {
+  const { get, set, on } = useReactions(currentReactions);
 
   /**
    * Renders the available reactions popup when showReactions is true
@@ -73,29 +75,31 @@ export default function Reactions({ clickReaction, currentReactions }: Props) {
   const handleRenderCurrentReactions = () => {
     if (!currentReactions.length) return null;
 
-    return (
-      <div className="w-full flex items-center justify-start gap-2 mt-4">
-        {/* Map through current reactions and display their emojis */}
-        <div className="flex gap-4">
-          {currentReactions.map((item) => (
-            <div className="flex items-center justify-start font-geist-mono" key={item.reaction}>
-              <span
-                key={item.reaction}
-                className="p-2 w-10 h-10 bg-zinc-200 dark:bg-zinc-600 rounded-full transition-colors flex items-center justify-center"
-                data-testid={`${item.reaction}-current`}
-              >
-                {AVAILABLE_REACTIONS.find((reaction) => reaction.key === item.reaction)?.emoji}
-              </span>
-              {item.count && (
-                <span className="text-xs font-black text-zinc-600 dark:text-zinc-400 ml-2">
-                  {item.count}
-                </span>
-              )}
-            </div>
-          ))}
-        </div>
+    return reactionsCount ? (
+      <div className="mt-6 flex items-center justify-start">
+        {/* Reaction count */}
+        {on.handleGetReactionEmojies(currentReactions).map((reaction, index) => (
+          <span
+            key={reaction}
+            className="text-xs dark:text-zinc-300 transition-colors bg-white border border-zinc-200 dark:border-zinc-400 dark:bg-zinc-500 shadow-md p-2 rounded-full w-[31px] h-[31px] flex items-center justify-center"
+            style={{
+              transform: `translateX(-${index * 5}px)`,
+            }}
+          >
+            {reaction}
+          </span>
+        ))}
+        {/* Reaction count */}
+        <span
+          className="text-[10px] font-geist-mono font-semibold text-bettermode-green-primary transition-colors ml-1 rounded-full bg-white border border-zinc-200 dark:border-zinc-400 dark:bg-zinc-500 w-[31px] h-[31px] flex items-center justify-center shadow-md"
+          style={{
+            transform: `translateX(-${(currentReactions.length + 1) * 5}px)`,
+          }}
+        >
+          +{reactionsCount}
+        </span>
       </div>
-    );
+    ) : null;
   };
 
   return (
@@ -105,7 +109,7 @@ export default function Reactions({ clickReaction, currentReactions }: Props) {
         <button
           ref={get.buttonRef}
           onClick={() => set.setShowReactions(!get.showReactions)}
-          className="px-4 py-2 h-[42px] flex items-center justify-center rounded-full border dark:border-zinc-400 bg-transparent dark:hover:bg-zinc-600 transition-colors dark:text-white"
+          className="px-4 py-2 h-[42px] flex items-center justify-center rounded-full border dark:border-zinc-400 bg-white dark:bg-zinc-500 dark:hover:bg-zinc-600 transition-colors dark:text-white"
         >
           {/* Display active reaction emoji or default heart icon */}
           {currentReactions.length ? (

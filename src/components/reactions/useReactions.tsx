@@ -46,6 +46,13 @@ export default function useReactions(currentReactions?: PostReaction[]) {
     };
   }, []);
 
+  const handleGetReactionEmojies = (reactions: PostReaction[]) => {
+    const reactionsKeys = reactions.map((reaction) => reaction.reaction);
+    return AVAILABLE_REACTIONS.filter((reaction) => reactionsKeys.includes(reaction.key)).map(
+      (reaction) => reaction.emoji
+    );
+  };
+
   return {
     get: {
       showReactions,
@@ -55,6 +62,9 @@ export default function useReactions(currentReactions?: PostReaction[]) {
     },
     set: {
       setShowReactions,
+    },
+    on: {
+      handleGetReactionEmojies,
     },
   };
 }
