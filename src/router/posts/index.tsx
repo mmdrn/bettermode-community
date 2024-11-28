@@ -25,19 +25,25 @@ export default function PostsList() {
     getNextPageParam: (lastPage) =>
       lastPage.posts.pageInfo.hasNextPage ? lastPage.posts.pageInfo.endCursor : undefined,
     staleTime: 5000,
+    onError: (data) => {
+      console.log("error", data);
+    },
   });
 
   return (
     <div className="container mx-auto flex items-center justify-center flex-col px-4">
       {/* Show loading state when data is not yet available */}
-      {!data ? (
-        <Loading className="mt-16" />
-      ) : isError ? (
+      {isError ? (
         // Show error message if data fetching fails
-        <p className="text-bettermode-green-primary flex flex-col items-center justify-center w-full gap-2 font-geist-mono font-semibold mt-16">
+        <p className="text-bettermode-green-primary flex flex-col items-center justify-center w-full gap-2 font-geist-mono font-semibold mt-16 text-center">
           <CloudAlert strokeWidth={2.6} size={80} />
           An error occurred while fetching data.
+          <br />
+          <br />
+          Are you sure about your space ID and post type ID and authorization token?
         </p>
+      ) : !data ? (
+        <Loading className="mt-16" />
       ) : (
         <>
           {/* Grid layout for posts */}
