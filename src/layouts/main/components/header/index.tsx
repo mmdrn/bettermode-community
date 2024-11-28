@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Menu, Sun, SunMoon } from "lucide-react";
 import { useGlobalContext } from "../../../../contexts/global-context";
 import { twMerge } from "tailwind-merge";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "./../../../../assets/logo.svg";
 import Cookies from "js-cookie";
 
@@ -16,8 +16,30 @@ export default function Header() {
   const token = Cookies.get("token");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const mobileMenu = document.querySelector('[data-testid="mobile-menu"]');
+      const menuButton = document.querySelector('[data-testid="menu-toggle-button"]');
+
+      if (
+        mobileMenu &&
+        !mobileMenu.contains(event.target as Node) &&
+        menuButton &&
+        !menuButton.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const handleSignout = () => {
     Cookies.remove("token");
+    setIsMobileMenuOpen(false);
     navigate("/signin");
   };
 
@@ -27,7 +49,10 @@ export default function Header() {
    */
   const RenderThemeButton = () => (
     <button
-      onClick={() => globalContext.setTheme(globalContext.theme === "light" ? "dark" : "light")}
+      onClick={() => {
+        globalContext.setTheme(globalContext.theme === "light" ? "dark" : "light");
+        setIsMobileMenuOpen(false);
+      }}
       className="relative w-6 h-6"
       data-testid="theme-toggle-button"
     >
@@ -55,18 +80,21 @@ export default function Header() {
     <>
       <Link
         to={"/"}
+        onClick={() => setIsMobileMenuOpen(false)}
         className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
       >
         Home
       </Link>
       <Link
         to={"/posts"}
+        onClick={() => setIsMobileMenuOpen(false)}
         className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
       >
         Posts
       </Link>
       <Link
         to={"https://github.com/mmdrn/bettermode-community"}
+        onClick={() => setIsMobileMenuOpen(false)}
         className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
       >
         Github
@@ -81,6 +109,7 @@ export default function Header() {
       ) : (
         <Link
           to={"/signin"}
+          onClick={() => setIsMobileMenuOpen(false)}
           className="flex items-center justify-start gap-2 px-1 hover:text-bettermode-green-primary transition-colors"
         >
           Signin
