@@ -12,31 +12,31 @@ describe("Hook: useReactions", () => {
   test("should initialize with default states and refs", () => {
     const { result } = renderHook(() => useReactions());
 
-    expect(result.current.get.showReactions).toBe(false);
-    expect(result.current.get.activeReaction).toBe(null);
-    expect(result.current.get.buttonRef.current).toBe(null);
-    expect(result.current.get.reactionsRef.current).toBe(null);
+    expect(result.current.variables.showReactions).toBe(false);
+    expect(result.current.variables.activeReaction).toBe(null);
+    expect(result.current.variables.buttonRef.current).toBe(null);
+    expect(result.current.variables.reactionsRef.current).toBe(null);
   });
 
   test("should correctly determine activeReaction", () => {
     // @ts-expect-error - Mocking mockReactions
     const { result } = renderHook(() => useReactions(mockReactions));
 
-    expect(result.current.get.activeReaction).toBe("love");
+    expect(result.current.variables.activeReaction).toBe("love");
   });
 
   test("should toggle showReactions state", () => {
     const { result } = renderHook(() => useReactions());
 
     act(() => {
-      result.current.set.setShowReactions(true);
+      result.current.setters.setShowReactions(true);
     });
-    expect(result.current.get.showReactions).toBe(true);
+    expect(result.current.variables.showReactions).toBe(true);
 
     act(() => {
-      result.current.set.setShowReactions(false);
+      result.current.setters.setShowReactions(false);
     });
-    expect(result.current.get.showReactions).toBe(false);
+    expect(result.current.variables.showReactions).toBe(false);
   });
 
   test("should close reactions popup when clicking outside", () => {
@@ -46,19 +46,19 @@ describe("Hook: useReactions", () => {
     const outsideElement = document.createElement("div");
 
     // @ts-expect-error - Mocking refs
-    result.current.get.buttonRef.current = button;
+    result.current.variables.buttonRef.current = button;
     // @ts-expect-error - Mocking refs
-    result.current.get.reactionsRef.current = popup;
+    result.current.variables.reactionsRef.current = popup;
 
     act(() => {
-      result.current.set.setShowReactions(true);
+      result.current.setters.setShowReactions(true);
     });
 
     // Simulate a click outside
     document.body.appendChild(outsideElement);
     outsideElement.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
 
-    expect(result.current.get.showReactions).toBe(false);
+    expect(result.current.variables.showReactions).toBe(false);
   });
 
   test("should not close reactions popup when clicking inside", () => {
@@ -67,17 +67,17 @@ describe("Hook: useReactions", () => {
     const popup = document.createElement("div");
 
     // @ts-expect-error - Mocking refs
-    result.current.get.buttonRef.current = button;
+    result.current.variables.buttonRef.current = button;
     // @ts-expect-error - Mocking refs
-    result.current.get.reactionsRef.current = popup;
+    result.current.variables.reactionsRef.current = popup;
 
     act(() => {
-      result.current.set.setShowReactions(true);
+      result.current.setters.setShowReactions(true);
     });
 
     // Simulate a click inside the popup
     popup.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
 
-    expect(result.current.get.showReactions).toBe(true);
+    expect(result.current.variables.showReactions).toBe(true);
   });
 });

@@ -54,16 +54,16 @@ export default function useReactions(currentReactions?: PostReaction[]) {
   };
 
   return {
-    get: {
+    variables: {
       showReactions,
       buttonRef,
       reactionsRef,
       activeReaction,
     },
-    set: {
+    setters: {
       setShowReactions,
     },
-    on: {
+    methods: {
       handleGetReactionEmojies,
     },
   };

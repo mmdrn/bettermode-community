@@ -66,7 +66,7 @@ export default function usePostDetail() {
   };
 
   return {
-    get: {
+    variables: {
       data,
       isLoading,
       isFetching,
@@ -74,7 +74,7 @@ export default function usePostDetail() {
       isRemoveingReaction,
       isError,
     },
-    on: {
+    methods: {
       handleClickReaction,
       refetch,
     },

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
 export default function PostDetail() {
-  const { get, on } = usePostDetail();
+  const { variables: get, methods: on } = usePostDetail();
 
   return (
     <div className="container mx-auto px-4 lg:px-0">

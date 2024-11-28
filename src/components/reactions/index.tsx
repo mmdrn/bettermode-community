@@ -27,7 +27,7 @@ type Props = {
  * @returns {JSX.Element} Rendered component
  */
 export default function Reactions({ clickReaction, currentReactions, reactionsCount }: Props) {
-  const { get, set, on } = useReactions(currentReactions);
+  const { variables: get, setters: set, methods: on } = useReactions(currentReactions);
 
   /**
    * Renders the available reactions popup when showReactions is true
@@ -85,6 +85,7 @@ export default function Reactions({ clickReaction, currentReactions, reactionsCo
             style={{
               transform: `translateX(-${index * 5}px)`,
             }}
+            data-testid={`${currentReactions[index].reaction}-current`}
           >
             {reaction}
           </span>
