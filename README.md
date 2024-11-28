@@ -31,7 +31,6 @@ The Bettermode Community Web Application offers the following features:
 5. **Dark and Light Theme**: Users can switch between dark and light themes for a personalized experience.  
 6. **Responsive Design**: Optimized for a seamless user experience across devices, including desktops, tablets, and mobile phones.  
 
-
 ---
 
 ### Getting Started
@@ -111,4 +110,32 @@ Open your browser and navigate through the following routes:
   - Posts include their associated reactions, and a "Show More" button enables navigation to subsequent pages.  
   - Pagination does not use URL search params, so refreshing the page will reset to the first page.
 - **`/posts/:id`**: Clicking on any post from the posts gallery will navigate the user to this route. The application will fetch details about the selected post and display it. This route is used to view individual post details, including additional information beyond the summary shown in the posts list.
+
+---
+
+## Available Scripts
+
+The project includes the following scripts for various development and production tasks:
+
+#### `yarn dev`
+Runs the development server.  
+Open [http://localhost:5173](http://localhost:5173) to view the application in your browser.  
+The server reloads whenever you make edits.
+
+#### `yarn build`
+Builds the application for production.  
+- Transpiles TypeScript files.
+- Generates optimized assets in the `dist` directory, ready to be deployed.
+
+#### `yarn lint`
+Runs ESLint across the codebase to identify and fix code quality issues.  
+Follow the suggested fixes to ensure your code adheres to best practices.
+
+#### `yarn preview`
+Serves the production build locally.  
+Useful for previewing the app before deploying it.
+
+#### `yarn test`
+Runs unit tests using Vitest.  
+You can write and execute test cases to ensure the application's reliability.
 

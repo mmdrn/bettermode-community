@@ -35,6 +35,8 @@ export default function MainLayout({ children }: { children: ReactNode }) {
     } else if (privateRoutes.some((item) => item.startsWith(location.pathname)) && !token) {
       navigate("/signin", { replace: true });
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   return (
