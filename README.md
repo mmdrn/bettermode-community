@@ -62,13 +62,22 @@ To run the application properly, you need to create a `.env` file in the root di
 Here is the structure of the `.env` file:
 
 ```plaintext
-VITE_AUTH_TOKEN="<your-auth-token>" # A valid JWT authentication token is required to interact with the Bettermode API.
+VITE_AUTH_TOKEN="<your-auth-token>" # JWT authentication token
 # VITE_SPACE_ID="<space-id>" # Space identifier (optional)
 VITE_DEFAULT_FETCH_POSTS_LIMIT=8 # The default maximum number of posts to fetch per request
 VITE_DEFAULT_THEME="light" # Default theme setting for the application ("light" or "dark")
 VITE_API_ORIGIN="https://api.bettermode.com" # API base URL
 VITE_AUTH_PASSWORD="<your-auth-password>" # Default authentication password
 VITE_AUTH_EMAIL="<your-auth-email>" # Default authentication email
+```
+- **`VITE_AUTH_TOKEN`**: A valid JWT authentication token is required to interact with the Bettermode API.
+- **`VITE_DEFAULT_FETCH_POSTS_LIMIT`**: Sets the default number of posts to fetch per request.
+- **`VITE_DEFAULT_THEME`**: Specifies the application's default theme (e.g., "light" or "dark").
+- **`VITE_API_ORIGIN`**: The base URL for the Bettermode API.
+- **`VITE_AUTH_PASSWORD and VITE_AUTH_EMAIL`**: Credentials used for the fake authentication process.
+
+Note: Replace placeholder values (e.g., <your-auth-token>, <your-auth-email>, and <your-auth-password>) with actual values before starting the application.
+Optional variables like VITE_SPACE_ID and VITE_POST_TYPE_ID can be uncommented and set if needed for extended functionality.
 
 
 #### 5. Run the development server
