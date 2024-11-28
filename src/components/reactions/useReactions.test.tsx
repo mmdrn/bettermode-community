@@ -19,7 +19,7 @@ describe("Hook: useReactions", () => {
   });
 
   test("should correctly determine activeReaction", () => {
-    // @ts-ignore
+    // @ts-expect-error - Mocking mockReactions
     const { result } = renderHook(() => useReactions(mockReactions));
 
     expect(result.current.get.activeReaction).toBe("love");
@@ -45,9 +45,9 @@ describe("Hook: useReactions", () => {
     const popup = document.createElement("div");
     const outsideElement = document.createElement("div");
 
-    // @ts-ignore
+    // @ts-expect-error - Mocking refs
     result.current.get.buttonRef.current = button;
-    // @ts-ignore
+    // @ts-expect-error - Mocking refs
     result.current.get.reactionsRef.current = popup;
 
     act(() => {
@@ -66,9 +66,9 @@ describe("Hook: useReactions", () => {
     const button = document.createElement("button");
     const popup = document.createElement("div");
 
-    // @ts-ignore
+    // @ts-expect-error - Mocking refs
     result.current.get.buttonRef.current = button;
-    // @ts-ignore
+    // @ts-expect-error - Mocking refs
     result.current.get.reactionsRef.current = popup;
 
     act(() => {

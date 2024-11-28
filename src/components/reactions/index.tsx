@@ -11,6 +11,7 @@ import useReactions from "./useReactions";
  * @property {PostReaction[]} currentReactions - Array of current reactions on the post
  */
 type Props = {
+  // eslint-disable-next-line no-unused-vars
   clickReaction: (params: { reaction: (typeof AVAILABLE_REACTIONS)[number]["key"] }) => void;
   currentReactions: PostReaction[];
 };

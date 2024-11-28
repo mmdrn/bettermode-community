@@ -22,7 +22,7 @@ describe("Component: reactions", () => {
   it("renders the available reactions when the button is clicked", () => {
     render(
       <BrowserRouter>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - Mocking clickReaction */}
         <Component clickReaction={clickReaction} currentReactions={currentReactions} />
       </BrowserRouter>
     );
@@ -40,7 +40,7 @@ describe("Component: reactions", () => {
   it("calls clickReaction when a reaction is selected", () => {
     render(
       <BrowserRouter>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - Mocking clickReaction */}
         <Component clickReaction={clickReaction} currentReactions={currentReactions} />
       </BrowserRouter>
     );
@@ -81,7 +81,7 @@ describe("Component: reactions", () => {
   it("toggles the reactions popup visibility when the button is clicked", () => {
     render(
       <BrowserRouter>
-        {/* @ts-ignore */}
+        {/* @ts-expect-error - Mocking clickReaction */}
         <Component clickReaction={clickReaction} currentReactions={currentReactions} />
       </BrowserRouter>
     );

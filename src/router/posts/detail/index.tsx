@@ -81,6 +81,7 @@ export default function PostDetail() {
                 {/* Reaction box */}
                 <Reactions
                   clickReaction={(data) => on.handleClickReaction(data.reaction)}
+                  // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
                   currentReactions={get.data?.post.reactions!}
                 />
               </div>

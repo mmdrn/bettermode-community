@@ -16,7 +16,7 @@ describe("Component: Main Layout Header", () => {
     mockSetTheme = vi.fn();
 
     // Mock global context values
-    // @ts-ignore
+    // @ts-expect-error - Mocking context values
     (useGlobalContext as vi.Mock).mockReturnValue({
       theme: "light",
       setTheme: mockSetTheme,

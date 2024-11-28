@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 type Theme = "light" | "dark";
 interface GlobalContextType {
   theme: Theme;
+  // eslint-disable-next-line no-unused-vars
   setTheme: (theme: Theme) => void;
 }
 
@@ -12,9 +13,9 @@ const GlobalContext = createContext<GlobalContextType>({
   setTheme: () => {},
 });
 
-interface GlobalContextProviderProps {
+type GlobalContextProviderProps = {
   children: ReactNode;
-}
+};
 
 export const GlobalProvider: React.FC<GlobalContextProviderProps> = ({ children }) => {
   const savedTheme = Cookies.get("theme") as Theme;
@@ -32,6 +33,7 @@ export const GlobalProvider: React.FC<GlobalContextProviderProps> = ({ children 
 };
 
 // Custom hook to consume global context
+// eslint-disable-next-line react-refresh/only-export-components
 export const useGlobalContext = () => {
   const context = useContext(GlobalContext);
   if (!context) {
