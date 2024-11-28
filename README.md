@@ -91,9 +91,6 @@ Authentication Flow:
 - Enter the `email and password` defined in the `.env` file. If the credentials are correct, the application will log you in and store the token in your cookies.
 - Once logged in, the user will be redirected to the home page and can access the `/posts` route to see the posts list tied to the provided token.
 
-Note: Be sure to set these values correctly to ensure smooth authentication and data fetching.
-
-
 #### 5. Run the development server
 Start the development server with:
 ```bash
