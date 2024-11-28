@@ -112,29 +112,21 @@ const ReadmeDisplay = () => {
         </h3>
         <pre>
           <code>
-            <span>VITE_AUTH_TOKEN</span>=
-            <span>"&lt;your-auth-token&gt;"</span> # JWT authentication token
-            (must be a real, valid token)
-            <span>VITE_SPACE_ID</span>=
-            <span>"&lt;space-id&gt;"</span> # Space identifier (optional: Leave
-            empty string)
-            <span>VITE_POST_TYPE_ID</span>=
-            <span>"&lt;post-type-id&gt;"</span> # Post type identifier
-            (optional: Leave empty string)
-            <span>VITE_DEFAULT_FETCH_POSTS_LIMIT</span>=
-            <span>8</span> # The default maximum number of posts to fetch per
-            request
-            <span>VITE_DEFAULT_THEME</span>=
-            <span>"light"</span> # Default theme setting for the application (
-            <span>"light"</span> or <span>"dark"</span>)
-            <span>VITE_API_ORIGIN</span>=
+            <span>VITE_AUTH_TOKEN</span>=<span>"&lt;your-auth-token&gt;"</span> # JWT authentication
+            token (must be a real, valid token)
+            <span>VITE_SPACE_ID</span>=<span>"&lt;space-id&gt;"</span> # Space identifier (optional:
+            Leave empty string)
+            <span>VITE_POST_TYPE_ID</span>=<span>"&lt;post-type-id&gt;"</span> # Post type
+            identifier (optional: Leave empty string)
+            <span>VITE_DEFAULT_FETCH_POSTS_LIMIT</span>=<span>8</span> # The default maximum number
+            of posts to fetch per request
+            <span>VITE_DEFAULT_THEME</span>=<span>"light"</span> # Default theme setting for the
+            application (<span>"light"</span> or <span>"dark"</span>)<span>VITE_API_ORIGIN</span>=
             <span>"https://api.bettermode.com"</span> # API base URL
-            <span>VITE_AUTH_PASSWORD</span>=
-            <span>"&lt;your-auth-password&gt;"</span> # Default authentication
-            password
-            <span>VITE_AUTH_EMAIL</span>=
-            <span>"&lt;your-auth-email&gt;"</span> # Default authentication
-            email
+            <span>VITE_AUTH_PASSWORD</span>=<span>"&lt;your-auth-password&gt;"</span> # Default
+            authentication password
+            <span>VITE_AUTH_EMAIL</span>=<span>"&lt;your-auth-email&gt;"</span> # Default
+            authentication email
           </code>
         </pre>
         <ul>
@@ -199,9 +191,7 @@ const ReadmeDisplay = () => {
         <h4 id="5-run-the-development-server">5. Run the development server</h4>
         <p>Start the development server with:</p>
         <pre>
-          <code>
-            <span>yarn dev</span>
-          </code>
+          <code>yarn dev</code>
         </pre>
         <p>
           The application will be available at <code>http://localhost:5173</code>.
@@ -319,9 +309,9 @@ const ReadmeDisplay = () => {
         <p>
           The project includes the following scripts for various development and production tasks:
         </p>
-        <h4 id="-yarn-dev-">
+        <pre>
           <code>yarn dev</code>
-        </h4>
+        </pre>
         <p>
           Runs the development server.
           <br />
@@ -330,9 +320,9 @@ const ReadmeDisplay = () => {
           <br />
           The server reloads whenever you make edits.
         </p>
-        <h4 id="-yarn-build-">
+        <pre>
           <code>yarn build</code>
-        </h4>
+        </pre>
         <p>Builds the application for production.</p>
         <ul>
           <li>Transpiles TypeScript files.</li>
@@ -340,25 +330,25 @@ const ReadmeDisplay = () => {
             Generates optimized assets in the <code>dist</code> directory, ready to be deployed.
           </li>
         </ul>
-        <h4 id="-yarn-lint-">
+        <pre>
           <code>yarn lint</code>
-        </h4>
+        </pre>
         <p>
           Runs ESLint across the codebase to identify and fix code quality issues.
           <br />
           Follow the suggested fixes to ensure your code adheres to best practices.
         </p>
-        <h4 id="-yarn-preview-">
+        <pre>
           <code>yarn preview</code>
-        </h4>
+        </pre>
         <p>
           Serves the production build locally.
           <br />
           Useful for previewing the app before deploying it.
         </p>
-        <h4 id="-yarn-test-">
+        <pre>
           <code>yarn test</code>
-        </h4>
+        </pre>
         <p>
           Runs unit tests using Vitest.
           <br />
@@ -367,7 +357,7 @@ const ReadmeDisplay = () => {
         <hr />
         <h2 id="technology-used">Technology Used</h2>
         <p>This project is built using the following technologies:</p>
-        <ol>
+        <ul className="!list-none space-y-4 [&>li>h4]:font-bold">
           <li>
             <h4 id="frontend">Frontend</h4>
             <ul>
@@ -450,7 +440,7 @@ const ReadmeDisplay = () => {
               </li>
             </ul>
           </li>
-        </ol>
+        </ul>
       </div>
     </div>
   );
