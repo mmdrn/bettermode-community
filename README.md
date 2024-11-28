@@ -59,7 +59,7 @@ yarn
 #### 4. Prepare the `.env` file
 To run the application properly, you need to create a `.env` file in the root directory of your project. This file will store the necessary environment variables required by the application. **It is crucial that you set up the authentication token correctly, or the application will not function as expected.**
 
-This application uses **fake login** because the developers do not have access to the exact authentication mechanism of the real Bettermode application. Instead, they implemented a fake authentication system, where the username, password, and a valid authorization token must be added to the `.env` file.
+This application uses **fake login** because the developers do not have access to the exact authentication mechanism of the real Bettermode application. Instead, they implemented a fake authentication system, where the email, password, and a valid authorization token must be added to the `.env` file.
 
 ### `.env` file structure:
 
@@ -74,14 +74,16 @@ VITE_AUTH_PASSWORD="<your-auth-password>" # Default authentication password
 VITE_AUTH_EMAIL="<your-auth-email>" # Default authentication email
 ```
 
-Important Notes:
-
-- **`VITE_AUTH_TOKEN`**: This is a critical value. You must add a real and valid JWT authorization token here to access the Bettermode API. If this token is incorrect or missing, the application will not be able to fetch posts or authenticate users properly.
-- **`VITE_AUTH_PASSWORD and VITE_AUTH_EMAIL`**:: These values are used for fake authentication. You can set any username and password here, but they must match what you input when logging in. Upon successful login, the token from this environment variable will be stored in the user's cookies.
-    After logging in with the correct credentials, the application will store a token key in the user's cookies, which will allow the user to access the posts list tied to that token.
 - **`VITE_DEFAULT_FETCH_POSTS_LIMIT`**: Sets the default number of posts to fetch per request.
 - **`VITE_DEFAULT_THEME`**: Specifies the application's default theme (e.g., "light" or "dark").
 - **`VITE_API_ORIGIN`**: The base URL for the Bettermode API.
+
+Important Notes:
+
+- **`VITE_AUTH_TOKEN`**: This is a critical value. You must add a real and valid JWT authorization token here to access the Bettermode API. If this token is incorrect or missing, the application will not be able to fetch posts or authenticate users properly.
+- **`VITE_AUTH_PASSWORD and VITE_AUTH_EMAIL`**:: These values are used for fake authentication. You can set any email and password here, but they must match what you input when logging in. Upon successful login, the token from this environment variable will be stored in the user's cookies.
+    After logging in with the correct credentials, the application will store a token key in the user's cookies, which will allow the user to access the posts list tied to that token.
+
 
 Authentication Flow:
 
